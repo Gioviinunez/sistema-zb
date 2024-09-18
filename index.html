@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZonaBrackets</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h1>ZonaBrackets</h1>
+
+    <!-- Input para la fecha del cierre de caja -->
+    <div>
+        <label for="cierreFecha">Fecha de Cierre:</label>
+        <input type="date" id="cierreFecha">
+    </div>
+
+    <!-- Selección de Profesional -->
+    <label for="professional">Profesional:</label>
+    <select id="professional">
+        <option value="Dra. Rocio">Dra. Rocio</option>
+        <option value="Dra. Xiomara">Dra. Xiomara</option>
+        <option value="Dra. Leila">Dra. Leila</option>
+        <option value="Dra. Florencia">Dra. Florencia</option>
+        <option value="Dr. Marcelo">Dr. Marcelo</option>
+        <option value="Dra. Yohary">Dra. Yohary</option>
+    </select>
+
+    <!-- Inputs para el paciente -->
+    <div>
+        <label for="patientName">Nombre del Paciente:</label>
+        <input type="text" id="patientName">
+    </div>
+
+    <div>
+        <label for="operationType">Tipo de Operación:</label>
+        <input type="text" id="operationType">
+    </div>
+
+    <div>
+        <label for="operationValue">Valor:</label>
+        <input type="number" id="operationValue">
+    </div>
+
+    <div>
+        <label for="paymentMethod">Forma de Pago:</label>
+        <select id="paymentMethod">
+            <option value="efectivo">Efectivo</option>
+            <option value="debito">Débito</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="commission">Comisión:</label>
+        <input type="number" id="commission">
+    </div>
+
+    <!-- Botones para gestionar pacientes -->
+    <button id="addPatient">Agregar Paciente</button>
+    <button id="deletePatient">Borrar Paciente</button>
+
+    <!-- Inputs para gastos y retiros -->
+    <div>
+        <label for="expense">Gastos:</label>
+        <input type="text" id="expense" placeholder="Ej: galletitas, 5000">
+        <button id="add-expense">Guardar Gasto</button>
+    </div>
+
+    <div>
+        <label for="withdrawal">Retiros:</label>
+        <input type="number" id="withdrawal" placeholder="Ej: 100000">
+        <button id="add-withdrawal">Guardar Retiro</button>
+    </div>
+
+    <!-- Botón para ver los gastos y retiros -->
+    <button id="view-expenses-withdrawals">Ver Gastos y Retiros</button>
+
+    <!-- Botón para sumar valores -->
+    <button id="sumValues">Suma de Valores</button>
+
+    <!-- Botón para Cierre de Caja -->
+    <button id="cierreDeCaja">Cierre de Caja</button>
+
+    <!-- Tabla para mostrar datos en vivo -->
+    <table id="patientTable">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Operación</th>
+                <th>Valor</th>
+                <th>Forma de Pago</th>
+                <th>Comisión</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
