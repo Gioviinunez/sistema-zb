@@ -1,82 +1,297 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f0f8ff;
+/* Variables globales */
+:root {
+    --main-bg-color: #fce0e0; /* Fondo rosado suave */
+    --main-text-color: #6c4f4f; /* Color de texto oscuro pero suave */
+    --primary-color: #f0568e; /* Rosa fuerte */
+    --secondary-color: #f9c0d7; /* Rosa pastel suave */
+    --accent-color: #ff80b3; /* Rosa brillante para acentos */
+    --danger-color: #f44336; /* Rojo para el botón de borrar */
+    --font-size-base: 16px;
+    --border-radius: 15px; /* Bordes más redondeados */
+    --transition-time: 0.4s; /* Transiciones más suaves */
+    --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave y más notoria */
+    --hover-scale: 1.05; /* Escala para hover */
+    --max-width: 1200px; /* Ancho máximo para contenedor */
 }
 
+/* Estilos Generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    line-height: 1.8;
+    font-size: var(--font-size-base);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-time), box-shadow var(--transition-time);
+    box-shadow: var(--box-shadow);
+    animation: fadeIn 1s ease-out; /* Animación suave al cargar */
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efecto de transición en el body */
+body:hover {
+    background-color: #ffe0f0; /* Fondo más suave */
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1); /* Sombra más suave al hover */
+}
+
+/* Título principal */
 h1 {
     text-align: center;
-    color: #006699;
+    color: var(--primary-color);
+    font-size: 3.5rem; /* Tamaño aumentado */
+    text-shadow: 2px 2px 15px rgba(242, 92, 127, 0.3); /* Sombra suave */
+    margin-bottom: 30px;
+    letter-spacing: 0.1em;
+    transition: transform var(--transition-time), color var(--transition-time);
 }
 
+/* Efecto de transformación en el h1 */
+h1:hover {
+    transform: scale(var(--hover-scale)); /* Agrandamiento suave */
+    color: var(--accent-color); /* Cambio de color en hover */
+}
+
+/* Etiquetas */
 label {
     display: inline-block;
-    width: 150px;
+    width: 160px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    color: var(--main-text-color);
+    font-size: 1.1rem;
+    transition: color var(--transition-time);
 }
 
+/* Inputs y selects */
 input, select {
-    margin-bottom: 10px;
-    padding: 5px;
-    width: 200px;
+    margin-bottom: 15px;
+    padding: 12px;
+    width: 100%;
+    max-width: 250px;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-time);
+    font-size: 14px;
 }
 
+/* Inputs específicos para los valores y nombres de pacientes */
+input.paciente-nombre, input.paciente-valor {
+    max-width: 200px;
+}
+
+/* Efecto de enfoque para inputs */
+input:focus, select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 12px rgba(255, 128, 179, 0.8);
+    outline: none; /* Eliminar el borde predeterminado de foco */
+}
+
+/* Botones */
 button {
-    padding: 10px 15px;
-    margin: 10px 0;
-    background-color: #4CAF50;
+    padding: 14px 24px;
+    margin: 15px 0;
+    background-color: var(--primary-color);
     color: white;
     border: none;
+    border-radius: var(--border-radius);
     cursor: pointer;
+    transition: all var(--transition-time);
+    font-size: 1.1rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
 }
 
+/* Efecto de hover en botones */
 button:hover {
-    background-color: #45a049;
+    background-color: var(--accent-color);
+    transform: translateY(-5px); /* Efecto de elevación */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
+button:active {
+    transform: translateY(0);
+}
+
+/* Efecto en el texto del botón */
+button:after {
+    content: '';
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    transition: all 0.4s;
+    opacity: 0;
+}
+
+button:hover:after {
+    opacity: 0.1;
+    width: 0;
+    height: 0;
+}
+
+/* Botón de Borrar todos los datos */
+button.delete {
+    background-color: var(--danger-color); /* Rojo */
+    color: white;
+}
+
+button.delete:hover {
+    background-color: #e53935; /* Rojo más intenso */
+    transform: translateY(-5px);
+}
+
+/* Tablas */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 30px;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    transition: transform var(--transition-time), box-shadow var(--transition-time);
+}
+
+table:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Sombra más intensa al pasar el mouse */
 }
 
 table, th, td {
-    border: 1px solid black;
+    border: 2px solid var(--primary-color);
 }
 
 th, td {
-    padding: 10px;
-    text-align: left;
+    padding: 16px;
+    font-size: 15px;
+    text-align: center;
+    background-color: #fff;
+    transition: background-color var(--transition-time);
 }
 
 th {
-    background-color: #4CAF50;
+    background-color: var(--primary-color);
     color: white;
 }
 
-/* Estilo para la tabla de resumen en el cierre de caja */
+/* Tabla de Resumen */
 .summary-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.summary-table, .summary-table th, .summary-table td {
-    border: 1px solid black;
+    margin-top: 30px;
 }
 
 .summary-table th, .summary-table td {
-    padding: 10px;
-    text-align: left;
+    padding: 16px;
 }
 
-.summary-table th {
-    background-color: #4CAF50;
+/* Estilos para títulos de secciones */
+.section-title {
+    margin-top: 30px;
+    color: var(--main-text-color);
+    font-size: 1.8rem;
+    border-bottom: 4px solid var(--primary-color);
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: color var(--transition-time), border-color var(--transition-time);
+}
+
+.section-title:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    body {
+        margin: 10px;
+    }
+
+    input, select, label {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    table, th, td {
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 2.8rem;
+    }
+}
+
+/* Estilo para los checkboxes */
+input[type="checkbox"] {
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    border: 2px solid var(--primary-color);
+    background-color: white;
+    position: relative;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Efecto cuando el checkbox está seleccionado */
+input[type="checkbox"]:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Efecto de hover */
+input[type="checkbox"]:hover {
+    border-color: var(--accent-color);
+}
+
+/* Agregar la tilde (check) cuando el checkbox está seleccionado */
+input[type="checkbox"]:checked::before {
+    content: '\2714'; /* Check */
+    font-size: 18px;
+    position: absolute;
+    top: 2px;
+    left: 5px;
     color: white;
 }
-
-.section-title {
-    margin-top: 20px;
-    color: #333;
+/* Inputs específicos para los valores y nombres de pacientes */
+input.paciente-nombre, input.paciente-valor {
+    max-width: 180px; /* Reducimos el max-width para evitar que se desborden */
+    width: 100%; /* Esto asegura que el input ocupe el 100% de su contenedor */
+    box-sizing: border-box; /* Esto incluye el borde y el padding dentro del ancho */
 }
+
+/* Asegurando que los inputs se ajusten bien dentro de las celdas de la tabla */
+table td {
+    word-wrap: break-word; /* Permite que el texto o los inputs se ajusten */
+    padding: 10px; /* Espaciado dentro de las celdas */
+}
+
+table input, table select {
+    max-width: 100%; /* Evita que los inputs excedan el tamaño de la celda */
+    width: 100%; /* Se ajusta al 100% de su contenedor */
+    padding: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
